@@ -1,0 +1,27 @@
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus-common
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - prom-graf-internal
+    command: --config.file=/etc/prometheus/prometheus.yml --log.level=warn
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana-common
+    depends_on:
+      prometheus:
+        condition: service_started
+    ports:
+      - "3000:3000"
+    environment:
+      GF_LOG_LEVEL: warn
+    networks:
+      - prom-graf-internal
+
+networks:
+  prom-graf-internal:
