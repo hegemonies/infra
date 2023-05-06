@@ -10,11 +10,12 @@ services:
       timeout: 1s
       retries: 100
     ports:
-      - 5432:5432
+      - 5433:5432
     environment:
       - POSTGRES_USER=tester
       - POSTGRES_PASSWORD=tester
       - POSTGRES_DB=tester
     volumes:
       - ./config/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./data:/var/lib/postgresql/data
     command: "postgres -c config_file=/etc/postgresql/postgresql.conf"
