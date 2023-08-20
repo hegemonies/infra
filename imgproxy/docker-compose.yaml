@@ -2,5 +2,6 @@ services:
   imgproxy:
     image: darthsim/imgproxy:latest
     container_name: imgproxy
+    restart: always
     ports:
       - 10000:8080
