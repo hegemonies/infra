@@ -1,0 +1,42 @@
+services:
+
+  nsqlookupd:
+    image: nsqio/nsq
+    container_name: nsqlookupd
+    restart: always
+    command: /nsqlookupd
+    ports:
+      - "4160"
+      - "4161"
+
+  nsqd1:
+    image: nsqio/nsq
+    container_name: nsqd1
+    restart: always
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4150:4150"
+      - "4151:4151"
+
+  nsqd2:
+    image: nsqio/nsq
+    container_name: nsqd2
+    restart: always
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4152:4150"
+      - "4153:4151"
+
+  nsqadmin:
+    image: nsqio/nsq
+    container_name: nsqadmin
+    restart: always
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    depends_on:
+      - nsqlookupd  
+    ports:
+      - "4171:4171"
