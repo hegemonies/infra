@@ -1,9 +1,11 @@
 services:
   prometheus:
     image: prom/prometheus:latest
+    restart: always
     container_name: prometheus-common
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-storage:/prometheus
     ports:
       - "9090:9090"
     networks:
@@ -12,7 +14,10 @@ services:
 
   grafana:
     image: grafana/grafana:latest
+    restart: always
     container_name: grafana-common
+    volumes:
+      - grafana-storage:/var/lib/grafana
     depends_on:
       prometheus:
         condition: service_started
@@ -25,3 +30,7 @@ services:
 
 networks:
   prom-graf-internal:
+
+volumes:
+  grafana-storage:
+  prometheus-storage:
