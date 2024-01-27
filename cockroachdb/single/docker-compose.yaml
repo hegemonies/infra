@@ -1,0 +1,15 @@
+services:
+
+  roach1:
+    image: cockroachdb/cockroach:latest
+    restart: always
+    environment:
+      - COCKROACH_DATABASE=admindb
+      - COCKROACH_USER=admin
+      - COCKROACH_PASSWORD=admin
+    ports:
+      - "26257:26257"
+      - "18080:8080"
+    volumes:
+      - "./data:/cockroach/cockroach-data"
+    command: start-single-node --insecure
