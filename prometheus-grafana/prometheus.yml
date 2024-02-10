@@ -8,33 +8,37 @@ scrape_configs:
     metrics_path: "/metrics"
     scrape_interval: 5s
     static_configs:
-      - targets: [192.168.10.136:9187]
+      - targets: [192.168.1.73:9187]
   - job_name: redis-exporter
     metrics_path: "/metrics"
     scrape_interval: 5s
     static_configs:
-      - targets: [192.168.10.136:9121]
+      - targets: [192.168.1.73:9121]
   - job_name: site-counter-core
     metrics_path: "actuator/prometheus"
     scrape_interval: 5s
     static_configs:
-      - targets: [192.168.10.136:8001]
+      - targets: [192.168.1.73:8001]
   - job_name: site-counter-collector
     metrics_path: "actuator/prometheus"
     scrape_interval: 5s
     static_configs:
-      - targets: [192.168.10.136:8100]
+      - targets: [192.168.1.73:8100]
   - job_name: kmq
     metrics_path: "actuator/prometheus"
     scrape_interval: 5s
     static_configs:
-      - targets: [192.168.10.136:8484]
+      - targets: [192.168.1.73:8484]
   - job_name: nio-postgres-kafka-connect
     metrics_path: "actuator/prometheus"
     scrape_interval: 5s
     static_configs:
-      - targets: [192.168.10.136:8380]
+      - targets: [192.168.1.73:8380]
   - job_name: imgproxy
     scrape_interval: 5s
     static_configs:
-      - targets: [192.168.10.136:10000]
+      - targets: [192.168.1.73:10000]
+  - job_name: caddy_hegemonies_site
+    scrape_interval: 5s
+    static_configs:
+      - targets: [134.0.113.131:2019]
