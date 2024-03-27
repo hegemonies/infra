@@ -1,0 +1,12 @@
+{"timestamp":"2024-03-27 21:08:49.680","source":"Server.js:170","message":"=== Starting Server ===","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:49.681","source":"Server.js:101","message":"[Server] Init v2.8.1","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:49.687","source":"Database.js:146","message":"[Database] absdatabase.sqlite not found at /config/absdatabase.sqlite","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:49.688","source":"Database.js:178","message":"[Database] Initializing db at \"/config/absdatabase.sqlite\"","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:49.758","source":"Database.js:206","message":"[Database] Db connection was successful","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:50.156","source":"Database.js:167","message":"[Database] Db initialized with models: user, library, libraryFolder, book, podcast, podcastEpisode, libraryItem, mediaProgress, series, bookSeries, author, bookAuthor, collection, collectionBook, playlist, playlistMediaItem, device, playbackSession, feed, feedEpisode, setting, customMetadataProvider","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:50.192","source":"LogManager.js:66","message":"[LogManager] Init current daily log filename: 2024-03-27.txt","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:50.232","source":"BackupManager.js:260","message":"[BackupManager] 0 Backups Found","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:50.233","source":"BackupManager.js:57","message":"[BackupManager] Auto Backups are disabled","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:08:50.257","source":"Server.js:319","message":"Listening on port :80","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:24:13.713","source":"Server.js:327","message":"[Server] Initializing new server","levelName":"INFO","level":2}
+{"timestamp":"2024-03-27 21:24:20.091","source":"SocketAuthority.js:108","message":"[SocketAuthority] Socket Connected 4CZy-gxUf_s2xl_MAAAB","levelName":"INFO","level":2}
