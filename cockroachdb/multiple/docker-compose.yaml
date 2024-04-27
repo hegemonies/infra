@@ -1,0 +1,72 @@
+services:
+
+  roach1:
+    image: cockroachdb/cockroach:latest
+    container_name: roach1
+    restart: always
+    environment:
+      - COCKROACH_DATABASE=admindb
+      - COCKROACH_USER=admin
+      - COCKROACH_PASSWORD=admin
+    ports:
+      - 26257:26257
+      - 48080:8080
+    volumes:
+      - roachvolume1:/cockroach/cockroach-data
+    command: start 
+      --advertise-addr=roach1:26357 
+      --http-addr=roach1:8080 
+      --listen-addr=roach1:26357 
+      --sql-addr=roach1:26257 
+      --insecure 
+      --join=roach1:26357,roach2:26357,roach3:26357
+
+  roach2:
+    image: cockroachdb/cockroach:latest
+    container_name: roach2
+    restart: always
+    environment:
+      - COCKROACH_DATABASE=admindb
+      - COCKROACH_USER=admin
+      - COCKROACH_PASSWORD=admin
+    ports:
+      - 26258:26258
+      - 48081:8081
+    volumes:
+      - roachvolume2:/cockroach/cockroach-data
+    command: start 
+      --advertise-addr=roach2:26357 
+      --http-addr=roach2:8081 
+      --listen-addr=roach2:26357 
+      --sql-addr=roach2:26258 
+      --insecure 
+      --join=roach1:26357,roach2:26357,roach3:26357
+
+  roach3:
+    image: cockroachdb/cockroach:latest
+    container_name: roach3
+    restart: always
+    environment:
+      - COCKROACH_DATABASE=admindb
+      - COCKROACH_USER=admin
+      - COCKROACH_PASSWORD=admin
+    ports:
+      - 26259:26259
+      - 48082:8082
+    volumes:
+      - roachvolume3:/cockroach/cockroach-data
+    command: start 
+      --advertise-addr=roach3:26357 
+      --http-addr=roach3:8082 
+      --listen-addr=roach3:26357 
+      --sql-addr=roach3:26259 
+      --insecure 
+      --join=roach1:26357,roach2:26357,roach3:26357
+
+volumes:
+  roachvolume1:
+  roachvolume2:
+  roachvolume3:
+
+networks:
+  roachnet:
