@@ -1,0 +1,20 @@
+services:
+
+  minio:
+    image: minio/minio:latest
+    restart: always
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=adminadmin
+      - MINIO_OPTS="--console-address :9001"
+    ports:
+      # console
+      - 9001:9001
+      # api
+      - 9004:9000
+    volumes:
+      - minio_volume_local:/data:rw
+    command:  server --console-address ":9001" /data/minio/
+
+volumes:
+  minio_volume_local:
