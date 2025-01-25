@@ -1,6 +1,6 @@
 services:
   imgproxy:
-    image: darthsim/imgproxy:latest
+    image: ghcr.io/imgproxy/imgproxy:latest
     container_name: imgproxy
     restart: always
     environment:
